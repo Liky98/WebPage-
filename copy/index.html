@@ -21,13 +21,13 @@ function autoScroll() {
 
 //<!-- 9-4 예제 사용한 자바 스크립트 -->
 	// <9-4>
-var abbb;
-function init() { // 문서가 완전히 로드되었을 때 호출
-	p = document.getElementById("abbb"); 
-	p.onmouseover = function () { // 익명 함수
-		this.style.backgroundColor = "skyBlue";
-	};
-	p.addEventListener("mouseout", 
+var ki;
+function initt() { // 문서가 완전히 로드되었을 때 호출
+	ki = document.getElementById("p");	
+	ki.onmouseover = function () { // 익명 함수
+		this.style.backgroundColor = "skyblue";
+	}; 
+	ki.addEventListener("mouseout", 
 		function () { this.style.backgroundColor="white"; } // 익명 함수
 	);
 }
@@ -36,7 +36,7 @@ function init() { // 문서가 완전히 로드되었을 때 호출
 
 
 	</head>
-	<body class="is-preload" onload="startScroll(3000), init()">
+	<body class="is-preload" onload="startScroll(3000), initt()">
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
@@ -321,7 +321,7 @@ document.write("a.toString() : " + c);
 										9-4번 예제 사용</a></h2>
 									</header>
 									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p onload="init()" id="abbb">익명함수를 이용하여 마우스가 올라가면 색이 변하는 이벤트 리스너를 작성합니다. </p>
+									<p id="p">익명함수를 이용하여 마우스가 올라가면 색이 변하는 이벤트 리스너를 작성합니다. </p>
 
 
 
@@ -382,7 +382,7 @@ function ff(e) { // e는 현재 발생한 이벤트 객체
 									</header>
 				<img id="img" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F277027375874594F09" 
 		onmouseover="startTimer(5000)"
-		onmouseout="cancelTimer()">
+		onmouseout="cancelTimer()" width="400px" height="250px">
 									<p>setTimeout으로 웹페이지를 자동 연결하는 예제입니다. 위에 사진에 마우스를 올리면 구글로 이동합니다. </p>
 <!-- 10-3 예제 사용한 자바 스크립트 -->			
 <script>
