@@ -1,0 +1,528 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>201735998 이기훈</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+<!-- 10-6 예제 사용한 자바 스크립트 -->
+	<script>//10-6
+		function startScroll(interval) {
+	setInterval("autoScroll()", interval);
+}
+
+function autoScroll() {
+	window.scrollBy(0,10); // 10픽셀 위로 이동
+}
+//<!-- 10-6 예제 사용한 자바 스크립트 -->
+
+//<!-- 9-4 예제 사용한 자바 스크립트 -->
+	// <9-4>
+var abbb;
+function init() { // 문서가 완전히 로드되었을 때 호출
+	p = document.getElementById("abbb"); 
+	p.onmouseover = function () { // 익명 함수
+		this.style.backgroundColor = "skyBlue";
+	};
+	p.addEventListener("mouseout", 
+		function () { this.style.backgroundColor="white"; } // 익명 함수
+	);
+}
+</script>
+<!-- 9-4 예제 사용한 자바 스크립트 -->
+
+
+	</head>
+	<body class="is-preload" onload="startScroll(3000), init()">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>LeeKiHoon<br />
+						Webprogramming Project</h1>
+						<p>자바스크립트를 실제 웹사이트에 적용하는 것을 목적으로 한다.</p>
+						<p>수정하고자하는 웹페이지를 선택하여 수업시간에 배운 자바스크립트로 수정한다.
+						<p>수정한 코드는 위아래로 주석을 넣어서 표시한다.</p>
+						<p>페이지는 3초마다 자동 스크롤 됩니다.</p>
+				
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Massively</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">자바스크립트 적용</a></li>
+							<li><a href="generic.html">Generic Page</a></li>
+							<li><a href="elements.html">Elements Reference</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<span class="date">2020-07-12</span>
+									<h2><a href="#">현재 사용자 접속시간<br />
+									7-5번 예제 사용</a></h2>
+									<p>사용자의 접속 시간을 확인하여 언제 웹페이지에 방문하였는지 정확한 시간을 표시합니다.</p>
+
+<!-- 7-5 예제 사용한 자바 스크립트 -->
+<script> // <7-5>
+var now = new Date(); // 현재 시간 값을 가진 Date 객체 생성
+document.write("현재 웹페이지 접속 시간은 " + now.toUTCString()
+				+ "입니다. <br>");
+document.write(" 정확한 시간은 ")
+document.write(now.getFullYear() + "년도 ");
+document.write(now.getMonth() + 1 + "월 ");
+document.write(now.getDate() + "일" );
+document.write(now.getHours() + "시 ");
+document.write(now.getMinutes() + "분 ");
+document.write(now.getSeconds() + " ");
+document.write(now.getMilliseconds() + ". 초 입니다.<hr>");
+document.write(" 다음 업데이트 날짜는 ")
+var next = new Date(2020, 7, 15, 0, 0, 10); // 7은 8월
+document.write( next.toLocaleString() + " 입니다. <br>");
+</script>
+<!-- 7-5 예제 사용한 자바 스크립트 -->
+
+<!-- 11장 예제 시계 애니메이션 사용한 자바 스크립트 -->
+ <canvas id="myCanvas" width="150" height="150"></canvas>
+    <script>
+function init(){
+  clock();
+  setInterval(clock,1000);
+}
+
+function clock(){
+  var now = new Date();
+  var ctx = document.getElementById('myCanvas').getContext('2d');
+  ctx.save();
+  ctx.clearRect(0,0,150,150);
+  ctx.translate(75,75);
+  ctx.scale(0.4,0.4);
+  ctx.rotate(-Math.PI/2);
+  ctx.strokeStyle = "black";
+  ctx.fillStyle = "white";
+  ctx.lineWidth = 8;
+  ctx.lineCap = "round";
+
+  // 시계판 - 시
+  ctx.save();
+  for (var i=0;i<12;i++){
+    ctx.beginPath();
+    ctx.rotate(Math.PI/6);
+    ctx.moveTo(100,0);
+    ctx.lineTo(120,0);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // 시계판 - 분
+  ctx.save();
+  ctx.lineWidth = 5;
+  for (i=0;i<60;i++){
+    if (i%5!=0) {
+      ctx.beginPath();
+      ctx.moveTo(117,0);
+      ctx.lineTo(120,0);
+      ctx.stroke();
+    }
+    ctx.rotate(Math.PI/30);
+  }
+  ctx.restore();
+
+  var sec = now.getSeconds();
+  var min = now.getMinutes();
+  var hr  = now.getHours();
+  hr = hr>=12 ? hr-12 : hr;
+
+  ctx.fillStyle = "black";
+
+  // 시간 표시 - 시
+  ctx.save();
+  ctx.rotate( hr*(Math.PI/6) + (Math.PI/360)*min + (Math.PI/21600)*sec )
+  ctx.lineWidth = 14;
+  ctx.beginPath();
+  ctx.moveTo(-20,0);
+  ctx.lineTo(80,0);
+  ctx.stroke();
+  ctx.restore();
+
+  // 시간 표시 - 분
+  ctx.save();
+  ctx.rotate( (Math.PI/30)*min + (Math.PI/1800)*sec )
+  ctx.lineWidth = 10;
+  ctx.beginPath();
+  ctx.moveTo(-28,0);
+  ctx.lineTo(112,0);
+  ctx.stroke();
+  ctx.restore();
+
+  // 시간 표시 - 초
+  ctx.save();
+  ctx.rotate(sec * Math.PI/30);
+  ctx.strokeStyle = "#D40000";
+  ctx.fillStyle = "#D40000";
+  ctx.lineWidth = 6;
+  ctx.beginPath();
+  ctx.moveTo(-30,0);
+  ctx.lineTo(83,0);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0,0,10,0,Math.PI*2,true);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(95,0,10,0,Math.PI*2,true);
+  ctx.stroke();
+  ctx.fillStyle = "rgba(0,0,0,0)";
+  ctx.arc(0,0,3,0,Math.PI*2,true);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.beginPath();
+  ctx.lineWidth = 14;
+  ctx.strokeStyle = '#325FA2';
+  ctx.arc(0,0,142,0,Math.PI*2,true);
+  ctx.stroke();
+
+  ctx.restore();
+}
+    </script>
+<!-- 11장 예제 시계 애니메이션 사용한 자바 스크립트 -->
+								</header>
+							</article>
+
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">Array 객체로 배열 계산하기<br />
+										7-3번 예제 사용</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+									<p>Array 객체로 배열을 만들어 이를 사용하여 계산을 합니다.</p>
+
+	<!-- 7-3 예제 사용한 자바 스크립트 -->
+	<script>// <7-3>
+	var degrees = new Array(); // 빈 배열 생성
+	degrees[0] = 100;
+	degrees[1] = 90; 
+	degrees[2] = 90;
+	degrees[3] = 80; 
+	degrees[4] = 100;
+	degrees[5] = 80; 
+
+	var sum = 0; 
+	for(i=0; i<degrees.length; i++)
+		sum += degrees[i];
+
+	document.write("기훈이의 2020년 1학기 성적의 평균은 " + sum/degrees.length + "입니다.<br>");
+</script>
+<!-- 7-3 예제 사용한 자바 스크립트 -->
+
+
+									
+								</article>
+								<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">Array객체로 과목 나누기<br />
+										7-4번 예제 사용</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+									<p>Array 객체의 메소드를 활용하여 1학기 과목을 나눕니다.</p>
+<!-- 7-4 예제 사용한 자바 스크립트 -->
+<script>
+function pr(msg, arr) {
+	document.write(msg + arr.toString() + "<br>");
+}
+var a = new Array("C++", "Linux", "HTML");
+var b = new Array("JavaScript");
+var c;
+
+pr("배열 a = ", a);
+pr("배열 b = ", b);
+document.write("<hr>");
+
+c = a.concat(b); // c는 a와 b를 연결한 새 배열
+pr("c = a.concat(b)후 c = ", c);
+pr("c = a.concat(b)후 a = ", a);
+
+c = a.join("##"); // c는 배열 a를 연결한 문자열
+pr("c = a.join() 후 c = ", c);
+pr("c = a.join() 후 a = ", a);
+
+c = a.reverse(); // a.reverse()로 a 자체 변경. c는 배열
+pr("c= a.reverse() 후 c = ", c); 
+pr("c= a.reverse() 후 a = ", a);
+
+c = a.slice(1, 2); // c는 새 배열
+pr("c= a.slice(1, 2) 후 c = ", c);
+pr("c= a.slice(1, 2) 후 a = ", a);
+
+c = a.sort(); // a.sort()는 a 자체 변경. c는 배열
+pr("c= a.sort() 후 c = ", c);
+pr("c= a.sort() 후 a = ", a);
+
+c = a.toString(); // toString()은 원소 사이에 ","를 넣어  문자열 생성
+document.write("a.toString() : " + c);
+</script>
+<!-- 7-4 예제 사용한 자바 스크립트 -->
+								</article>
+								<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">Date객체 웹페이지 접속 시간<br />
+										7-6번 예제 사용</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+									<p>현재 시간을 가진 Date 객체를 생성하여 현재 웹페이지 접속 시간을 표시합니다.</p>
+	<!-- 7-6 예제 사용한 자바 스크립트 -->
+	<script> // <7-6>
+	var current = new Date(); // 현재 시간을 가진 Date 객체 생성
+	if(current.getSeconds() % 2 == 0)
+		document.body.style.backgroundColor = "violet";
+	else
+		document.body.style.backgroundColor = "lightskyblue";
+
+	document.write("현재 웹페이지의 최초 접속 시간은 ");
+	document.write(current.getHours(), ":");
+	document.write(current.getMinutes(), ":");
+	document.write(current.getSeconds(), " 입니다.<br>");
+</script>
+<!-- 7-6 예제 사용한 자바 스크립트 -->
+
+								</article>
+								<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">글자의 배경생 바꾸는 이벤트 리스너<br />
+										9-4번 예제 사용</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
+									<p onload="init()" id="abbb">익명함수를 이용하여 마우스가 올라가면 색이 변하는 이벤트 리스너를 작성합니다. </p>
+
+
+
+								</article>
+
+								<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">글과 버튼에 이벤트 적용하기<br />
+										9-5번 예제 사용</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+									<p id="s">이벤트 리스너에서 이벤트 객체를 전달 받는 것으로, 현재 발생한 이벤트 객체에 대해 반응을 한다. 마우스를 올리면 이벤트가 발생합니다.</p>
+<!-- 9-5 예제 사용한 자바 스크립트 -->									
+<script>	
+function ll(e) { // e는 현재 발생한 이벤트 객체
+	alert(e.type); // 이벤트 종류 출력
+}
+document.getElementById("s").onmouseover = ll;
+
+</script>
+<button onclick="ll(event)">클릭해보세요</button>
+<!-- 9-5 예제 사용한 자바 스크립트 -->
+
+								</article>
+
+								<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">대제목<br />
+										9-6번 예제 사용</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+									<p id="aaa">이벤트 객체의 프로퍼티를 출력하는 버튼입니다. 버튼을 눌면 click 이벤트 객체의 프로퍼티를 출력합니다.</p>
+<!-- 9-6 예제 사용한 자바 스크립트 -->			
+<script>
+function ff(e) { // e는 현재 발생한 이벤트 객체
+	var text = "type: " + e.type + "<br>" 
+					+ "target: " + e.target + "<br>"
+					+ "currentTarget: " + e.currentTarget + "<br>"
+					+ "defaultPrevented: " + e.defaultPrevented;
+
+	var qq = document.getElementById("aaa");
+	qq.innerHTML = text; // 이벤트 객체의 프로퍼티 출력
+}
+</script>
+<button onclick="ff(event)">클릭하세요</button>
+<!-- 9-6 예제 사용한 자바 스크립트 -->			
+							
+								</article>
+							
+						
+						<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">페이지 자동연결<br />
+										10-3번 예제 사용</a></h2>
+									</header>
+				<img id="img" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F277027375874594F09" 
+		onmouseover="startTimer(5000)"
+		onmouseout="cancelTimer()">
+									<p>setTimeout으로 웹페이지를 자동 연결하는 예제입니다. 위에 사진에 마우스를 올리면 구글로 이동합니다. </p>
+<!-- 10-3 예제 사용한 자바 스크립트 -->			
+<script>
+var timerID=null;
+function startTimer(time) {
+	// 타이머 시작
+	timerID = setTimeout("load('http://www.google.com')", time);
+
+	// 이미지에 마우스 올리면 나타내는 툴팁 메시지
+	document.getElementById("img").title = "타이머 작동 시작...";
+}
+function cancelTimer() {
+	if(timerID !=null) 
+		clearTimeout(timerID); // 타이머 중단
+}
+function load(url) {
+	window.location = url; // 현재 윈도우에  url 사이트 로드 
+}
+</script>
+<!-- 10-3 예제 사용한 자바 스크립트 -->			
+							
+								</article>
+
+
+								<article>
+									<header>
+										<span class="date">2020-07-12</span>
+										<h2><a href="#">글자 회전이벤트<br />
+										10-4번 예제 사용</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" ></a>
+									<p>setInterval로 텍스트를 회전하는 코드입니다. 클릭을하면 회전을 정지합니다. </p>
+<!-- 10-4 예제 사용한 자바 스크립트 -->				
+									<!-- 10-4 -->
+<div><span id="span" style="background-color:skyblue">
+					201735998 이기훈</span>
+</div>
+<script>
+var span = document.getElementById("span");
+var timerID = setInterval("doRotate()", 200); // 200밀리초 주기로 doRotate() 호출
+
+span.onclick = function (e) { // 마우스 클릭 이벤트 리스너
+	clearInterval(timerID); // 타이머 해제. 문자열 회전 중단
+}
+
+function doRotate() {
+	var str = span.innerHTML;
+	var firstChar = str.substr(0, 1);
+	var remains = str.substr(1, str.length-1);
+	str = remains + firstChar;
+	span.innerHTML = str; 
+}
+</script>
+<!-- 10-4 예제 사용한 자바 스크립트 -->										
+								</article>
+ 
+						</section>
+
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+									<a href="#" class="page active">1</a>
+									<a href="#" class="page">2</a>
+									<a href="#" class="page">3</a>
+									<span class="extra">&hellip;</span>
+									<a href="#" class="page">8</a>
+									<a href="#" class="page">9</a>
+									<a href="#" class="page">10</a>
+									<a href="#" class="next">Next</a>
+								</div>
+							</footer>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>1234 Somewhere Road #87257<br />
+								Nashville, TN 00000-0000</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(000) 000-0000</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">info@untitled.tld</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
